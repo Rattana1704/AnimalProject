@@ -18,7 +18,7 @@ class Animal
 
     public void ShowInformation ()
     {
-        Console.WriteLine ($"Name : {Name}, Type : {GetType}().Name, Age : {Age}");
+        Console.WriteLine ($"Name : {Name}, Type : {GetType().Name}, Age : {Age}");
     }
 
     public void Feed ()
