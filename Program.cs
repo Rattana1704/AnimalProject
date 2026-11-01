@@ -46,9 +46,28 @@ class Dog : Animal
     }
 }
 
-class Cat : Animal 
+class Cat : Animal
+{
+    public Cat(string name, int age) : base(name, age)
+    {
+    }
+    public override void Sound()
+    {
+        Console.WriteLine($"{Name} says: Meow!");
+    }
+}
 
-class Bird : Animal 
+
+class Bird : Animal
+{
+    public Bird(string name, int age) : base(name, age)
+    {
+    }
+    public override void Sound()
+    {
+        Console.WriteLine($"{Name} says: Tweet!");
+    }
+}
 
 class Program
 {
