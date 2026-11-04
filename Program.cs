@@ -1,4 +1,4 @@
-﻿
+
 class Animal
 { 
     public string Name { get;}
@@ -71,50 +71,65 @@ class Bird : Animal
 
 class Program
 {
-    static void Main ()
+    static void Main()
+{
+    List<Animal> animals = new List<Animal>
     {
-        List <Animal> animals = new List<Animal>
-         {
-            new Dog("Buddy", 4),
-            new Cat("Luna", 2),
-            new Bird("Kiwi", 1),
-            new Dog("Max", 6)
-        };
-        bool running = true ;
-        while (running)
+        new Dog("Buddy", 4),
+        new Cat("Luna", 2),
+        new Bird("Kiwi", 1),
+        new Dog("Max", 6)
+    };
+
+    // Show the menu only once.
+    Console.WriteLine("--- Animal Menu ---");
+    Console.WriteLine("1. Show all animals");
+    Console.WriteLine("2. Hear all animal sounds");
+    Console.WriteLine("3. Feed all animals");
+    Console.WriteLine("0. Exit");
+
+    bool running = true;
+
+    while (running)
+    {
+        Console.Write("\nChoose an option: ");
+        string? input = Console.ReadLine();
+
+        if (input == null)
+        { break;}
+
+        if (!int.TryParse(input, out int choice))
         {
-            Console.WriteLine("\n--- Animal Menu ---");
-            Console.WriteLine("1. Show all animals");
-            Console.WriteLine("2. Hear all animal sounds");
-            Console.WriteLine("3. Feed all animals");
-            Console.WriteLine("0. Exit");
-            Console.Write("Choose an option: ");
+            Console.WriteLine("Please enter a number from 0 to 3.");
+            continue;
+        }
 
-            string? input = Console.ReadLine();
-
-            if (!int.TryParse (input, out int choice))
-            {
-                Console.WriteLine("Please enter a number from 0 to 3.");
-                continue;
-            }
-            switch ( choice)
-            {
-                case 1:
+        switch (choice)
+        {
+            case 1:
                 foreach (Animal animal in animals)
-                animal.ShowInformation();
+                {animal.ShowInformation();}
                 break;
-                case 2:
-                case 3:
-                case 0:
+
+            case 2:
+                foreach (Animal animal in animals)
+                {animal.Sound();}
+                break;
+
+            case 3:
+                foreach (Animal animal in animals)
+                {animal.Feed();}
+                break;
+
+            case 0:
                 running = false;
-                Console.WriteLine ("goodbye!");
+                Console.WriteLine("Goodbye!");
                 break;
-                default : 
-                Console.WriteLine ("please choose a number from 0 to 3.");
+
+            default:
+                Console.WriteLine("Please choose a number from 0 to 3.");
                 break;
-            }
-
-
         }
     }
+}
 }
