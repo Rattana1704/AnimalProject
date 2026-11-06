@@ -5,6 +5,7 @@ class Animal
     public int Age {get ;}
     public bool IsHungry { get ; private set;}
     public Animal (string name , int age)
+
     {
         Name = name ;
         Age = age ;
@@ -16,9 +17,9 @@ class Animal
         Console.WriteLine ($"{Name} makes an animal sound.");
     }
 
-    public void ShowInformation ()
+    public string GetInformation()
     {
-        Console.WriteLine ($"Name : {Name}, Type : {GetType().Name}, Age : {Age}");
+        return $"Name : {Name}, Type : {GetType().Name}, Age : {Age}";
     }
 
     public void Feed ()
@@ -39,6 +40,7 @@ class Dog : Animal
 {
     public Dog(string name, int age) : base(name, age)
     {
+        
     }
     public override void Sound()
     {
@@ -108,7 +110,7 @@ class Program
         {
             case 1:
                 foreach (Animal animal in animals)
-                {animal.ShowInformation();}
+                {Console.WriteLine(animal.GetInformation());}
                 break;
 
             case 2:
